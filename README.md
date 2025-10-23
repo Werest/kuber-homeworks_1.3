@@ -1,4 +1,4 @@
-<img width="810" height="126" alt="z1-2" src="https://github.com/user-attachments/assets/3b895d18-a0c7-4b2f-9eda-019f96cf50bf" /># kuber-homeworks_1.3
+# kuber-homeworks_1.3
 
 # Домашнее задание к занятию «Запуск приложений в K8S»
 
