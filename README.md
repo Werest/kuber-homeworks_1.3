@@ -71,6 +71,7 @@ spec:
 <img width="810" height="126" alt="z1-2" src="https://github.com/user-attachments/assets/7b909231-d403-4672-bc1c-4f380de56557" />
 
 Устанавливаем replicas: 2 увеличив количество реплик работающего приложения
+
 <img width="817" height="142" alt="z1-3" src="https://github.com/user-attachments/assets/eed19248-9af1-41ad-a20d-ddf98a9c6a59" />
 
 **Service**
@@ -93,8 +94,10 @@ spec:
 <img width="908" height="123" alt="z1-4" src="https://github.com/user-attachments/assets/bcd93066-b522-40b8-896c-17f224926ffe" />
 
 Проверим работу
+```
 microk8s kubectl exec -it deploy/nginx-multitool-deployment -c multitool -- curl http://nginx-multitool-svc:8080
 microk8s kubectl exec -it deploy/nginx-multitool-deployment -c multitool -- curl http://nginx-multitool-svc:80
+```
 
 <img width="1635" height="540" alt="z1-5" src="https://github.com/user-attachments/assets/49ed678c-8be5-4e26-bcd8-ef4635b1988b" />
 
