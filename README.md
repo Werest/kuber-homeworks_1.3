@@ -123,7 +123,53 @@ spec:
 3. Создать и запустить Service. Убедиться, что Init запустился.
 4. Продемонстрировать состояние пода до и после запуска сервиса.
 ------
+**Deployment**
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+      initContainers:
+      - name: init-nginx-svc
+        image: busybox
+        command: ['sh', '-c', "until nslookup nginx-service.default.svc.cluster.local; do echo waiting for myservice; sleep 2; done"]
+```
+**Service**
+```
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  selector:
+    app: nginx
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+```
+<img width="860" height="177" alt="z2-1" src="https://github.com/user-attachments/assets/b5770438-4af5-4df6-8fd2-713349f83a2b" />
 
+<img width="990" height="300" alt="z2-2" src="https://github.com/user-attachments/assets/6dea0409-73dd-4f17-a660-0d8f9122cebd" />
+
+<img width="964" height="301" alt="z2-3" src="https://github.com/user-attachments/assets/7ae0f042-5ff8-4678-8be4-9ca377145d3a" />
 
 
 
